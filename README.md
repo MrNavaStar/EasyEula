@@ -12,7 +12,7 @@ A tiny minecraft mod that allows you to agree to the minecraft EULA in console r
 
 # For Developers
 You can include this mod into your projects build.gradle file for convenience when developing with minecraft servers.
-```groovy
+```gradle
 repositories {
     maven { url "https://api.modrinth.com/maven" }
 }
