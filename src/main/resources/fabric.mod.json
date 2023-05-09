@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "easyeula",
+  "version": "debug-build",
+  "name": "EasyEula",
+  "description": "Agree to the minecraft EULA in console rather than restarting the server!",
+  "authors": ["MrNavaStar"],
+  "contact": {
+    "repo": "https://github.com/MrNavaStar/EasyEula"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/easyeula/icon.png",
+  "environment": "server",
+  "mixins": [
+    "easyeula.mixins.json"
+  ]
+}
