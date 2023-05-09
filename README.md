@@ -11,8 +11,8 @@
 A tiny minecraft mod that allows you to agree to the minecraft EULA in console rather than restarting the server!
 
 # For Developers
-You can include this mod into your projects build.gradle file for convienice when developing with minecraft servers.
-```gradle
+You can include this mod into your projects build.gradle file for convenience when developing with minecraft servers.
+```groovy
 repositories {
     maven { url "https://api.modrinth.com/maven" }
 }
