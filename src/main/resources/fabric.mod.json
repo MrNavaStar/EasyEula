@@ -13,5 +13,10 @@
   "environment": "server",
   "mixins": [
     "easyeula.mixins.json"
-  ]
+  ],
+  "custom": {
+    "modmanager": {
+        "modrinth": "CvQCitpB"
+    }
+  }
 }
