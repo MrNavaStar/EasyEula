@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "id": "easyeula",
-  "version": "debug-build",
-  "name": "EasyEula",
+  "version": "0.debug-build",
+  "name": "Easy Eula",
   "description": "Agree to the minecraft EULA in console rather than restarting the server!",
   "authors": ["MrNavaStar"],
   "contact": {
