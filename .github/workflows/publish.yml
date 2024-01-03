@@ -41,7 +41,7 @@ jobs:
       - name: Download Jar
         uses: actions/download-artifact@v3
         with:
-          name: sqlib-jar
+          name: easy-eula-jar
           path: ${{ github.workspace }}
 
       - name: Delete Jar
@@ -83,7 +83,11 @@ jobs:
             1.19.4
             1.20
             1.20.1
+            1.20.2
+            1.20.3
+            1.20.4
           loaders: |
             fabric
             quilt
+            forge
           java: 17

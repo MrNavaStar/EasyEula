@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "easyeula",
-  "version": "0.debug-build",
+  "version": "debug-build",
   "name": "Easy Eula",
-  "description": "Agree to the minecraft EULA in console rather than restarting the server!",
+  "description": "Allows you to agree to the minecraft EULA in console rather than restarting the server!",
   "authors": ["MrNavaStar"],
   "contact": {
     "repo": "https://github.com/MrNavaStar/EasyEula"
