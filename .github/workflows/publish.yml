@@ -7,87 +7,68 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-      
-      - name: Set Version
+
+      - name: Set Fabric Version
         uses: jossef/action-set-json-field@v2.1
         with:
           file: src/main/resources/fabric.mod.json
           field: version
-          value: ${{ github.ref_name }}
-      
+          value: ${{ github.event.release.tag_name }}
+
+      - name: Set Forge Version
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: src/main/resources/META_INF/mods.toml
+          key: mods.version
+          value: ${{ github.event.release.tag_name }}
+
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
       - name: Execute Gradle build
         run: ./gradlew build
 
-      - name: Upload Jar
-        uses: actions/upload-artifact@v3
-        with:
-          name: sqlib-jar
-          path: ${{ github.workspace }}/build/libs/*.jar
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Download Jar
-        uses: actions/download-artifact@v3
-        with:
-          name: easy-eula-jar
-          path: ${{ github.workspace }}
-
-      - name: Delete Jar
-        uses: geekyeggo/delete-artifact@v2
-        with:
-          name: sqlib-jar
+      - name: Rename File
+        run: mv ${{ github.workspace }}/build/libs/EasyEula-*.jar ${{ github.workspace }}/EasyEula-${{ github.event.release.tag_name }}.jar;
 
       - name: Publish Release
         uses: Kir-Antipov/mc-publish@v3.2
         with:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-
+          modrinth-featured: true
           files: ${{ github.workspace }}/*.jar
-
+          java: 17
           game-versions: |
-            1.14
-            1.14.1
-            1.14.2
-            1.14.3
-            1.14.4
-            1.15
-            1.15.1
-            1.15.2
-            1.16
-            1.16.1
-            1.16.2
-            1.16.3
-            1.16.4
-            1.16.5
-            1.17
-            1.17.1
-            1.18
-            1.18.1
-            1.18.2
-            1.19
-            1.19.1
-            1.19.2
-            1.19.3
-            1.19.4
-            1.20
-            1.20.1
-            1.20.2
-            1.20.3
             1.20.4
+            1.20.3
+            1.20.2
+            1.20.1
+            1.20
+            1.19.4
+            1.19.3
+            1.19.2
+            1.19.1
+            1.19
+            1.18.2
+            1.18.1
+            1.18
+            1.17.1
+            1.17
+            1.16.5
+            1.15.2
+            1.15.1
+            1.15
+            1.14.4
+            1.14.3
+            1.14.2
+            1.14.1
+            1.14
           loaders: |
             fabric
             quilt
             forge
-          java: 17
