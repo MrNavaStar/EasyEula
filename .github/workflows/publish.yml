@@ -18,7 +18,7 @@ jobs:
         run: |
           sed -i 's/debug-build/${{ github.event.release.tag_name }}/g' gradle.properties
           sed -i 's/debug-build/${{ github.event.release.tag_name }}/g' fabric/src/main/resources/fabric.mod.json
-          sed -i 's/0.debug-build/${{ github.event.release.tag_name }}/g' forge/src/main/resources/META_INF/mods.toml
+          sed -i 's/0.debug-build/${{ github.event.release.tag_name }}/g' forge/src/main/resources/META-INF/mods.toml
 
       - name: Build
         run: ./gradlew build
