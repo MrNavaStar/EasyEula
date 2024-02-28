@@ -26,19 +26,14 @@ jobs:
       - name: Publish Fabric
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-id: CvQCitpB
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
           version: ${{ github.event.release.tag_name }}-fabric
           files: ${{ github.workspace }}/fabric/build/libs/EasyEula-${{ github.event.release.tag_name }}.jar
           java: 17
           game-versions: |
-            [1.20,1.20.4)
-            [1.19,1.19.4)
-            [1.18,1.18.2)
-            [1.17,1.17.1)
-            [1.16,1.16.5)
-            [1.15,1.15.2)
+            >=1.15
           loaders: |
             fabric
             quilt
@@ -46,18 +41,13 @@ jobs:
       - name: Publish Forge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-id: CvQCitpB
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
           version: ${{ github.event.release.tag_name }}-forge
           files: ${{ github.workspace }}/forge/build/libs/EasyEula-${{ github.event.release.tag_name }}.jar
           java: 17
           game-versions: |
-            [1.20,1.20.4)
-            [1.19,1.19.4)
-            [1.18,1.18.2)
-            [1.17,1.17.1)
-            [1.16,1.16.5)
-            [1.15,1.15.2)
+            >=1.15
           loaders: |
             forge
