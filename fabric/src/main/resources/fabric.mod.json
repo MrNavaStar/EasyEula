@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "easyeula",
+  "version": "debug-build",
+  "name": "Easy Eula",
+  "description": "Allows you to agree to the minecraft EULA in console rather than restarting the server!",
+  "authors": ["MrNavaStar"],
+  "contact": {
+    "repo": "https://github.com/MrNavaStar/EasyEula"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/easyeula/icon.png",
+  "environment": "server",
+  "mixins": [
+    "easyeula.mixins.json"
+  ],
+  "custom": {
+    "modmanager": {
+        "modrinth": "CvQCitpB"
+    }
+  }
+}

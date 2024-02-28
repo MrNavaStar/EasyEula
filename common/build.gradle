@@ -1,0 +1,13 @@
+architectury {
+    common("fabric", "forge")
+}
+
+loom {
+    mixin {
+        defaultRefmapName = "easyeula.refmap.json"
+    }
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.loader_version}"
+}

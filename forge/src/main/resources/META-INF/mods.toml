@@ -1,0 +1,14 @@
+modLoader = "javafml"
+loaderVersion = "[28,)"
+license = "CC0-1.0"
+issueTrackerURL="https://github.com/MrNavaStar/EasyEula/issues"
+
+[[mods]]
+modId = "easyeula"
+version = "0.debug-build"
+displayName = "Easy Eula"
+displayURL="https://github.com/MrNavaStar/EasyEula"
+authors="MrNavaStar"
+description = "Allows you to agree to the minecraft EULA in console rather than restarting the server!"
+
+displayTest="IGNORE_ALL_VERSION"
