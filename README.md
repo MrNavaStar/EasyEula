@@ -18,6 +18,6 @@ repositories {
 }
 
 dependencies {
-  modImplementation("maven.modrinth:easy-eula:1.0.0")
+  modImplementation("maven.modrinth:easy-eula:1.1.0-fabric") // Or -forge
 }
 ```
