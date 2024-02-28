@@ -5,7 +5,7 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G4DZF4D)
 
-<img src="https://raw.githubusercontent.com/MrNavaStar/EasyEula/master/src/main/resources/assets/easyeula/icon.png" width="300" height="300">
+<img src="https://raw.githubusercontent.com/MrNavaStar/EasyEula/master/common/src/main/resources/assets/easyeula/icon.png" width="300" height="300">
 
 # Easy Eula
 A tiny minecraft mod that allows you to agree to the minecraft EULA in console rather than restarting the server!
