@@ -13,62 +13,53 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Set Fabric Version
-        uses: jossef/action-set-json-field@v2.1
-        with:
-          file: src/main/resources/fabric.mod.json
-          field: version
-          value: ${{ github.event.release.tag_name }}
+      - name: Set Version
+        run: |
+          sed -i 's/debug-build/${{ github.event.release.tag_name }}/g' ${{ github.workspace }}/gradle.properties
+          sed -i 's/debug-build/${{ github.event.release.tag_name }}/g' ${{ github.workspace }}/fabric/src/main/resources/fabric.mod.json
+          sed -i 's/0.debug-build/${{ github.event.release.tag_name }}/g' ${{ github.workspace }}/forge/src/main/resources/META_INF/mods.toml
 
-      - name: Set Forge Version
-        uses: ciiiii/toml-editor@1.0.0
-        with:
-          file: src/main/resources/META_INF/mods.toml
-          key: mods.version
-          value: ${{ github.event.release.tag_name }}
-
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
-      - name: Execute Gradle build
+      - name: Build
+        uses: gradle/gradle-build-action@v3
         run: ./gradlew build
 
-      - name: Rename File
-        run: mv ${{ github.workspace }}/build/libs/EasyEula-*.jar ${{ github.workspace }}/EasyEula-${{ github.event.release.tag_name }}.jar;
-
-      - name: Publish Release
-        uses: Kir-Antipov/mc-publish@v3.2
+      - name: Publish Fabric
+        uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-id: CvQCitpB
           modrinth-featured: true
-          files: ${{ github.workspace }}/*.jar
+          modrinth-unfeature-mode: version-subset
+          version: ${{ github.event.release.tag_name }}-fabric
+          files: ${{ github.workspace }}/fabric/build/libs/EasyEula-${{ github.event.release.tag_name }}.zip
           java: 17
           game-versions: |
-            1.20.4
-            1.20.3
-            1.20.2
-            1.20.1
-            1.20
-            1.19.4
-            1.19.3
-            1.19.2
-            1.19.1
-            1.19
-            1.18.2
-            1.18.1
-            1.18
-            1.17.1
-            1.17
-            1.16.5
-            1.15.2
-            1.15.1
-            1.15
-            1.14.4
-            1.14.3
-            1.14.2
-            1.14.1
-            1.14
+            [1.20,1.20.4)
+            [1.19,1.19.4)
+            [1.18,1.18.2)
+            [1.17,1.17.1)
+            [1.16,1.16.5)
+            [1.15,1.15.2)
           loaders: |
             fabric
             quilt
+
+      - name: Publish Forge
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-id: CvQCitpB
+          modrinth-featured: true
+          modrinth-unfeature-mode: version-subset
+          version: ${{ github.event.release.tag_name }}-forge
+          files: ${{ github.workspace }}/forge/build/libs/EasyEula-${{ github.event.release.tag_name }}.zip
+          java: 17
+          game-versions: |
+            [1.20,1.20.4)
+            [1.19,1.19.4)
+            [1.18,1.18.2)
+            [1.17,1.17.1)
+            [1.16,1.16.5)
+            [1.15,1.15.2)
+          loaders: |
             forge
