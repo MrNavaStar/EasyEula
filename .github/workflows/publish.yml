@@ -12,6 +12,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+      - uses: gradle/gradle-build-action@v3
 
       - name: Set Version
         run: |
@@ -20,7 +21,6 @@ jobs:
           sed -i 's/0.debug-build/${{ github.event.release.tag_name }}/g' ${{ github.workspace }}/forge/src/main/resources/META_INF/mods.toml
 
       - name: Build
-        uses: gradle/gradle-build-action@v3
         run: ./gradlew build
 
       - name: Publish Fabric
