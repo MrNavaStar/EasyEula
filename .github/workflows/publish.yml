@@ -29,7 +29,6 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-id: CvQCitpB
           modrinth-featured: true
-          modrinth-unfeature-mode: version-subset
           version: ${{ github.event.release.tag_name }}-fabric
           files: ${{ github.workspace }}/fabric/build/libs/EasyEula-${{ github.event.release.tag_name }}.zip
           java: 17
@@ -50,7 +49,6 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-id: CvQCitpB
           modrinth-featured: true
-          modrinth-unfeature-mode: version-subset
           version: ${{ github.event.release.tag_name }}-forge
           files: ${{ github.workspace }}/forge/build/libs/EasyEula-${{ github.event.release.tag_name }}.zip
           java: 17
