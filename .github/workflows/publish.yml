@@ -30,7 +30,7 @@ jobs:
           modrinth-id: CvQCitpB
           modrinth-featured: true
           version: ${{ github.event.release.tag_name }}-fabric
-          files: ${{ github.workspace }}/fabric/build/libs/EasyEula-${{ github.event.release.tag_name }}.zip
+          files: ${{ github.workspace }}/fabric/build/libs/EasyEula-${{ github.event.release.tag_name }}.jar
           java: 17
           game-versions: |
             [1.20,1.20.4)
@@ -50,7 +50,7 @@ jobs:
           modrinth-id: CvQCitpB
           modrinth-featured: true
           version: ${{ github.event.release.tag_name }}-forge
-          files: ${{ github.workspace }}/forge/build/libs/EasyEula-${{ github.event.release.tag_name }}.zip
+          files: ${{ github.workspace }}/forge/build/libs/EasyEula-${{ github.event.release.tag_name }}.jar
           java: 17
           game-versions: |
             [1.20,1.20.4)
