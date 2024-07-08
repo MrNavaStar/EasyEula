@@ -1,5 +1,6 @@
 package me.mrnavastar.easyeula.mixin;
 
+import me.mrnavastar.easyeula.EasyEula;
 import net.minecraft.server.dedicated.EulaReader;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Final;
@@ -25,7 +26,7 @@ public abstract class EulaReaderMixin {
 
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/dedicated/EulaReader;checkEulaAgreement()Z"))
     private boolean init(EulaReader instance) {
-        if (checkEulaAgreement()) return true;
+        if (EasyEula.isSkipEulaCheck() || checkEulaAgreement()) return true;
 
         LOGGER.warn("Please indicate your agreement to the minecraft EULA (https://aka.ms/MinecraftEULA)");
         LOGGER.warn("Agree [Y/n]: ");
