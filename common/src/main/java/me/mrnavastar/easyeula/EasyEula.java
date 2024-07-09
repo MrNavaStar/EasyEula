@@ -7,7 +7,7 @@ public class EasyEula {
     @Getter
     private static boolean eulaAccepted = false;
 
-    public void acceptEula() {
+    public static void acceptEula() {
         eulaAccepted = true;
     }
 }
