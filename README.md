@@ -21,3 +21,9 @@ dependencies {
   modImplementation("maven.modrinth:easy-eula:1.1.0-fabric") // Or -forge
 }
 ```
+
+If extra functionality is required, the Eula can also be accepted in code via:
+```java
+EasyEula.acceptEula();
+```
+This is especially useful for test mods that run in automated environments.
