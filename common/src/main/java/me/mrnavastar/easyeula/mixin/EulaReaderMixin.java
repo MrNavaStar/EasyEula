@@ -26,7 +26,7 @@ public abstract class EulaReaderMixin {
 
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/dedicated/EulaReader;checkEulaAgreement()Z"))
     private boolean init(EulaReader instance) {
-        if (EasyEula.isSkipEulaCheck() || checkEulaAgreement()) return true;
+        if (EasyEula.isEulaAccepted() || checkEulaAgreement()) return true;
 
         LOGGER.warn("Please indicate your agreement to the minecraft EULA (https://aka.ms/MinecraftEULA)");
         LOGGER.warn("Agree [Y/n]: ");
